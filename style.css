@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 2rem;
+    font-family: 'Belanosima', sans-serif;
+    background-color: rgb(30, 28, 28);
+    height: 100vh;
+    color: orange;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.container {
+    width: 70%;
+    height: 500px;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.title {
+    font-size: 5rem;
+}
+
+.select-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.question {
+    font-size: 3rem;
+}
+
+.option {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.x, .o {
+    width: 40%;
+    height: 65%;
+    border: 2px solid yellowgreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.x.active, .o.active {
+    width: 50%;
+    height: 80%;
+    border-color: cadetblue;
+}
+
+.o.active {
+    border-color: rgb(209, 93, 112);
+}
+
+.x:hover, .o:hover, .begin:hover {
+    cursor: pointer;
+    box-shadow: 5px 2px 2px whitesmoke;
+    transform: translate(-5px, -5px);
+}
+
+.begin {
+    width: 25%;
+    height: 120px;
+    font-size: 3rem;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container.active {
+    position: fixed;
+    animation: fall 1s ease-in forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+        visibility: hidden;
+    }
+}
+
+.game-container {
+    width: 90%;
+    margin-top: 2rem;
+    position: fixed;
+    top: -100vh;
+    visibility: hidden;
+}
+
+.game-container.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fallGame 1s ease-in forwards;
+}
+
+@keyframes fallGame {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+        visibility: visible;
+    }
+}
+
+.game-header {
+    width: 40%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-turn {
+    width: 35%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    background-color: rgba(253, 252, 252, 0.186);
+    box-shadow: 0 8px 6px -6px rgb(135, 135, 135);
+    color: rgba(255, 166, 0, 0.312);
+    transition: color .4s ease-in;
+    font-size: 1.75rem;
+}
+
+.icons {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.game-restart {
+    width: 10%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(253, 252, 252, 0.186);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 6px -6px rgb(135, 135, 135);
+    cursor: pointer;
+}
+
+.x-icon {
+    color: cadetblue;
+}
+
+.o-icon {
+    color: rgb(209, 93, 112);
+}
+
+.game {
+    width: 40%;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.box {
+    background-color: rgba(253, 252, 252, 0.186);;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.box.active {
+    background-color: cadetblue;
+}
+
+.result {
+    visibility: hidden;
+    top: 40%;
+    width: 100%;
+    height: 25%;
+    position: fixed;
+    background-color: rgb(48, 37, 37);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.again {
+    width: 15%;
+    height: 30%;
+    background-color: orange;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px grey;
+}
+
+.again:hover {
+    cursor: pointer;
+    background-color: rgb(200, 137, 20);
+}
+
+@media screen and (max-width: 1200px) {
+    .title {
+        font-size: 4.5rem;
+    }   
+}
+
+@media screen and (max-width: 1024px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .question {
+        font-size: 2.25rem;
+    }
+
+    .begin {
+        font-size: 2rem;
+        height: 50px;
+    }
+
+    .box {
+        font-size: 3.5rem;
+    }
+
+    .player-turn, .game-restart {
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .game-restart {
+        width: 15%;
+    }
+
+    .again {
+        font-size: 1.5rem;
+    }
+
+    .game, .game-header {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    body {
+        font-size: 1.5rem;
+    }
+    
+    .container {
+        width: 80%;
+    }
+
+    .title {
+        font-size: 2.25rem;
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+
+    .begin {
+        font-size: 1.25rem;
+    }
+
+    .option {
+        width: 35%;
+        height: 85px;
+    }
+
+    .x, .o {
+        height: 70%;
+    }
+
+    .box {
+        font-size: 2.5rem;
+        border-radius: 5px;
+    }
+
+    .result {
+        height: 20%;
+    }
+
+    .again {
+        width: 20%;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .player-turn, .game-restart {
+        width: 40%;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .game-restart {
+        width: 15%;
+    }
+
+    .game {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 481px) {
+    body {
+        font-size: 1rem;
+    }
+    
+    .container {
+        width: 90%;
+        gap: 20px;
+    }
+
+    .select-container {
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .option {
+        height: 65px;
+        width: 60%;
+    }
+
+    .question {
+        font-size: 1.2rem;
+    }
+
+    .box {
+        font-size: 2rem;
+    }
+
+    .player-turn, .game-restart {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .game-restart {
+        width: 20%;
+    }
+
+    .again {
+        font-size: 12px;
+    }
+
+    .game-header {
+        height: 60px;
+    }
+}
